@@ -1,0 +1,41 @@
+server:
+  port: 8060
+
+spring:
+  application:
+    name: Object-Storage-Service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/iotmining
+    username: postgres
+    password: 8506
+    hikari:
+      pool-name: LoginServicePool
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 30000
+      connection-timeout: 2000
+      max-lifetime: 1800000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: postgresql
+
+minio:
+  url: http://localhost:9000
+  access-key: minioadmin
+  secret-key: minioadmin
+  bucket: iotmining-rms
+
+services:
+  device-service:
+    url: http://localhost:8081
+  device-profile-service:
+    url: http://localhost:8082
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 3000
+        readTimeout: 5000
