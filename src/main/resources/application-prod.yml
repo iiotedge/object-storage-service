@@ -22,16 +22,16 @@ spring:
     database: postgresql
 
 minio:
-  url: http://localhost:9000
+  url: ${MINIO_S3_SERVICE_URL:http://localhost:9000}
   access-key: minioadmin
   secret-key: minioadmin
   bucket: iotmining-rms
 
 services:
   device-service:
-    url: http://localhost:8081
+    url: ${DEVICE_MANAGEMENT_SERVICE_URL:http://localhost:9055}
   device-profile-service:
-    url: http://localhost:8082
+    url: ${DEVICE_PROFILE_SERVICE_URL:http://localhost:9056}
 
 feign:
   client:

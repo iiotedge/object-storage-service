@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/objects")
+@RequestMapping("/api/v1/object")
 public class ObjectController {
 
     @Autowired
