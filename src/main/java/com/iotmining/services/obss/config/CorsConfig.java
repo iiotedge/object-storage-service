@@ -14,12 +14,7 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList(
-                "http://localhost:3000",
-                "http://localhost:3001",
-                "http://localhost:3009",
-                "http://localhost:3002"
-        ));
+        config.setAllowedOrigins(Arrays.asList("https://iiotedge.in", "http://iiotedge.in", "http://localhost:3000", "http://localhost:3001", "http://localhost:3009", "http://localhost:3002")); // React app URL
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
         config.setAllowCredentials(true); // Allow cookies / headers

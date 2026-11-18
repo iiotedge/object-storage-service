@@ -2,6 +2,9 @@ server:
   port: 8060
 
 spring:
+  config:
+    activate:
+      on-profile: dev
   application:
     name: Object-Storage-Service
   datasource:
@@ -21,17 +24,20 @@ spring:
     show-sql: true
     database: postgresql
 
+# MinIO Configuration
 minio:
-  url: http://localhost:9000
-  access-key: minioadmin
-  secret-key: minioadmin
-  bucket: iotmining-rms
+  url: ${MINIO_URL:http://localhost:9000}
+  access-key: ${MINIO_ACCESS_KEY:minioadmin}
+  secret-key: ${MINIO_SECRET_KEY:minioadmin}
+  bucket: ${MINIO_BUCKET:iotmining-rms}
 
 services:
   device-service:
-    url: http://localhost:8081
+    # Uses env var DEVICE_SERVICE_URL; defaults to localhost:8055 if not set
+    url: ${DEVICE_SERVICE_URL:http://localhost:8055}
   device-profile-service:
-    url: http://localhost:8082
+    # Uses env var DEVICE_PROFILE_SERVICE_URL; defaults to localhost:8056 if not set
+    url: ${DEVICE_PROFILE_SERVICE_URL:http://localhost:8056}
 
 feign:
   client:

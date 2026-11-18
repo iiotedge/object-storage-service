@@ -6,5 +6,4 @@ import lombok.Data;
 public class DeviceProfileDto {
     private String id;
     private String category;
-    // Add other fields as needed
 }
